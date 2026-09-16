@@ -1,5 +1,11 @@
 # LiveRagdollTest
 
+> **Active development.** This mod is under active, ongoing development —
+> expect frequent changes, tuning passes, and occasional rough edges. The
+> public API (`LiveRagdollTest.Api.LiveRagdollBridge`) is the intended stable
+> integration surface for other mods, but internals can and do change between
+> commits. Issues/PRs from other mod devs are welcome.
+
 A BepInEx mod for SPT 4.1.3 that gives a downed-but-alive character (bot or
 player) real physical ragdoll motion while down, then returns control
 smoothly when recovered — without teleporting, flying through walls, or the
