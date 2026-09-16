@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>10.0</LangVersion>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="xunit" Version="2.6.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="../Internal/SettleDetector.cs" />
+    <Compile Include="../Internal/AngularVelocityMath.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- AngularVelocityMath.cs compiles against UnityEngine.Quaternion/Vector3 in its thin
+         FromRotationDelta wrapper (tests only call the pure Compute(...) overload below that
+         one, never Quaternion/Vector3 members directly — several of those types' own methods are
+         native ECall stubs that only run inside a live Unity process). Private=true so the DLL is
+         actually copied to the test output folder: this project runs standalone, not inside the
+         game process where Unity's own assemblies are already loaded. -->
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>D:\Games\SPT-4.1_test\EscapeFromTarkov_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+</Project>
